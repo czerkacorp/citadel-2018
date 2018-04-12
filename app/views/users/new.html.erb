@@ -1,0 +1,8 @@
+<h1>Users#new</h1>
+<%= form_tag({:action => 'create' }, :multipart => true) do %>
+    Username: <%= text_field("new_user", "username") %>
+    <br />
+    Password: <%= password_field("new_user", "password") %>
+    <br />
+    <%= submit_tag("Register") %>
+<% end %>

@@ -1,0 +1,17 @@
+<h1>Users#index</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Created Date</th>
+        <th>Admin Level</th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.created %></td>
+        <td><%= user.admin_level %></td>
+        </tr>
+    <% end %>
+</table>

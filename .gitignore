@@ -7,8 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore Visual Studio Code stuff
+/.vscode/*
+
 # Ignore further changes to config database.yml
-# /config/database.yml
+/config/database.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
