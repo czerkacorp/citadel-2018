@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'securerandom'
-require 'digest'
+require "securerandom"
+require "digest"
 
 # Users Controller
 class UsersController < ApplicationController
@@ -10,22 +10,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    ## SWGEmu Default dbSecret
-    ## To be reworked at a later date
-    prng = Random.new
-    db_secret = 'swgemus3cr37!'
+    dbSecret = "swgemus3cr37!"
     salt = SecureRandom.hex(10)
-    password = params[:new_user][:password]
-    username = params[:new_user][:username]
-    pass_hash = Digest::SHA256.hexdigest(db_secret + password + salt)
-    begin
-      User.create!(username: username,
-                   password: pass_hash,
-                   station_id: prng.rand(4294967295),
-                   salt: salt)
-      redirect_to users_path
-    rescue ActiveRecord::RecordInvalid
-      flash.now[:error] = 'Error Saving User'
-    end
+    password = params[:new][:password]
+    name = params[:new][:username]
+    email = params[:new][:email]
+    prng = Random.new
+    station_id = prng.rand(4294967295)
+    pass_hash = Digest::SHA256.hexdigest(dbSecret + password + salt)
+    user = User.create(name: name, password: pass_hash, email: email)
+    account = Account.create!(username: name, password: pass_hash, salt: salt, station_id: station_id)
+    user.account_id = account.account_id
+    user.save!
+    redirect_to users_path
   end
 end
