@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20180417222809) do
 
   create_table "account_bans", primary_key: "ban_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
     t.integer "account_id", null: false, unsigned: true
@@ -18,13 +18,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.timestamp "created", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.timestamp "expires", null: false
     t.text "reason", limit: 255, null: false
-  end
-
-  create_table "account_ips", primary_key: "idaccount_ips", id: :integer, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
-    t.integer "account_id", null: false, unsigned: true
-    t.string "ip", limit: 45, null: false
-    t.timestamp "timestamp", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.integer "logout", limit: 1, default: 0, null: false
   end
 
   create_table "account_log", primary_key: "acclog_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
@@ -85,6 +78,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.timestamp "creation_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
+  create_table "citadel_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_citadel_users_on_account_id"
+  end
+
   create_table "deleted_characters", primary_key: "character_oid", id: :bigint, default: nil, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
     t.integer "account_id", limit: 3, default: 0, null: false, unsigned: true
     t.integer "galaxy_id", default: 0, null: false, unsigned: true
@@ -94,7 +95,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.boolean "gender", default: false, null: false
     t.text "template", limit: 255, null: false
     t.timestamp "creation_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.boolean "db_deleted", default: false, null: false
     t.index ["account_id"], name: "acc_idx"
   end
 
