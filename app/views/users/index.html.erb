@@ -1,17 +1,26 @@
 <h1>Users#index</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>email</th>
-        <th>Admin Level</th>
-    </tr>
-    <% @users.each do |user| %>
-        <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.get_account().admin_level %></td>
-        </tr>
-    <% end %>
+<table class="table table-striped table-hover">
+    <div class="row">
+    <hr />
+        <div class="col-lg-6">
+            <tr>
+                <th>Citadel ID</th>
+                <th>SWGEmu ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Admin Level</th>
+                <th>Created</th>
+            </tr>
+            <% @users.each do |user| %>
+                <tr>
+                <td><%= user.id %></td>
+                <td><%= user.get_account().account_id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.get_account().admin_level %></td>
+                <td><%= user.get_account().created.strftime("%B %d, %Y - %l:%M %p") %>
+                </tr>
+            <% end %>
+        </div>
+    </div>
 </table>
