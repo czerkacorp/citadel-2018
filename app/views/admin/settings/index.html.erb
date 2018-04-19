@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="card card-primary">
+    <div class="card-header">Site Settings</div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col" colspan="2">Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @settings.each_key do |key| %>
+            <tr>
+              <th scope=row><%= key %></th>
+              <td><%= Setting[key] %></td>
+              <td><%= link_to 'edit', edit_admin_setting_path(key) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+    </div>
+  </div>
+</div>
