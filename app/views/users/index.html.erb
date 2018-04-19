@@ -19,6 +19,7 @@
                 <td><%= user.email %></td>
                 <td><%= user.get_account().admin_level %></td>
                 <td><%= user.get_account().created.strftime("%B %d, %Y - %l:%M %p") %>
+                <td><%= link_to 'View Details', action: :show, id: user.id %>
                 </tr>
             <% end %>
         </div>
