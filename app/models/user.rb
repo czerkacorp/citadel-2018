@@ -1,6 +1,3 @@
-require 'securerandom'
-require 'digest'
-
 class User < ActiveRecord::Base
   self.table_name = "citadel_users"
   validates :name, uniqueness: true
@@ -19,22 +16,9 @@ class User < ActiveRecord::Base
   end
 
   def self.update_details(id, params)
-    user = User.find(id: id)
-    user.update(filter_params(params))
-    Account.update_sync(user.account_id, params)
-  end
-
-  def filter_params(params)
-    u_params = Hash.new
-    u_params[:name] = params[:name]
-    if params[:pass] != nil then
-      u_params[:salt] = SecureRandom.hex(12)
-      params[:salt] = u_params[:salt]
-      u_params[:password] = Digest::SHA256.hexdigest(Setting['db_secret'] + params[:pass] + user_params[:salt])
-      params[:password] = user_params[:password]
-    end
-    u_params[:email] = params[:email]
-    return u_params
+    user = User.find(id)
+    user.update(UserFormService.filter(params))
+    Account.update_sync(user[:account_id], params)
   end
 
   def get_account

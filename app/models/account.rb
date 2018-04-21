@@ -12,16 +12,6 @@ class Account < ActiveRecord::Base
 
   def self.update_sync(id, params)
     account = Account.find(id)
-    account.update(filter_params(params))
-  end
-
-  def filter_params(params)
-    a_params = Hash.new
-    a_params[:username] = params[:name]
-    if params[:password] != nil then
-      a_params[:password] = params[:password]
-      a_params[:salt] = params[:salt]
-    end
-    return a_params
+    account.update(AccountFormService.filter(params))
   end
 end
