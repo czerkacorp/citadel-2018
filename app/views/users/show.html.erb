@@ -1,3 +1,5 @@
+<% #TODO be able to list character info %>
+
 <div class="container">
   <div class="card mb-2">
     <div class="card header">Details for: <%= @user.name %></div>
@@ -24,10 +26,6 @@
     </div>
   </div>
   <div class="float-right">
-    <div class="btn btn-danger">
-      <%= link_to "Close", users_path, {class: "btn btn-danger", role: "button"} %>
-    </div>
-    <div class="btn btn-primary">
-      <%= link_to "Edit", edit_user_path(@user), {class: "btn btn-primary", role: "button"} %>
-    </div>
+    <%= link_to "Close", users_path, {class: "btn btn-secondary", role: "button"} %>
+    <%= link_to "Edit", edit_user_path(@user), {class: "btn btn-primary", role: "button"} %>
 </div>

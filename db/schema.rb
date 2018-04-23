@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419142358) do
+ActiveRecord::Schema.define(version: 20180420125457) do
 
   create_table "account_bans", primary_key: "ban_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
     t.integer "account_id", null: false, unsigned: true
@@ -78,11 +78,24 @@ ActiveRecord::Schema.define(version: 20180419142358) do
     t.timestamp "creation_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
+  create_table "citadel_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.integer "thing_id"
+    t.string "thing_type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thing_type", "thing_id", "var"], name: "index_citadel_settings_on_thing_type_and_thing_id_and_var", unique: true
+  end
+
   create_table "citadel_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "email"
     t.string "password"
     t.bigint "account_id"
+    t.string "salt"
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
     t.index ["account_id"], name: "index_citadel_users_on_account_id"
   end
 
@@ -586,16 +599,6 @@ ActiveRecord::Schema.define(version: 20180419142358) do
     t.integer "session_id", null: false, unsigned: true
     t.string "ip", limit: 15, null: false
     t.datetime "expires", null: false
-  end
-
-  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "var", null: false
-    t.text "value"
-    t.integer "thing_id"
-    t.string "thing_type", limit: 30
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
   end
 
   create_table "skills", primary_key: "skill_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
