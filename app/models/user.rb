@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   def self.register(user)
     user[:salt] = SecureRandom.hex(12)
-    user[:pass_hash] = Digest::SHA256.hexdigest(Setting['db_secret'] + user[:password] + salt)
+    user[:pass_hash] = Digest::SHA256.hexdigest(Setting['db_secret'] + user[:pass] + user[:salt])
     new_user = User.create(
       name: user[:name],
       password: user[:pass_hash],
