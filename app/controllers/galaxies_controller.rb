@@ -1,0 +1,2 @@
+class GalaxiesController < ApplicationController
+end
