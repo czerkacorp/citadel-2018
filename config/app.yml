@@ -1,6 +1,7 @@
 # config/app.yml for rails-settings-cached
 defaults: &defaults
   db_secret: "swgemus3cr37!"
+  salt_length: 12
 
 development:
   <<: *defaults
