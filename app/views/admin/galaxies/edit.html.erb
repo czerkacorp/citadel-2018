@@ -1,0 +1,38 @@
+<div class="container">
+<%= form_for(@galaxy, url: admin_galaxy_path(@galaxy.galaxy_id), method: 'patch') do |f| %>
+  <div class="card mb-2">
+    <div class="card-header">Edit Galaxy: <%= @galaxy.name %> </div>
+    <div class="card-body">
+        <div class="form-group">
+          <%= f.label :galaxy_id %>
+          <%= f.text_field :galaxy_id, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+                <div class="form-group">
+          <%= f.label :address %>
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :port %>
+          <%= f.text_field :port, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :pingport %>
+          <%= f.text_field :pingport, class: "form-control" %>
+        </div>
+          <div class="form-group">
+          <%= f.label :population %>
+          <%= f.text_field :population, class: "form-control" %>
+        </div>
+    </div>  
+  </div>
+  <div class="float-right">
+    <%= link_to "Delete Galaxy", {action: :destroy, id: @galaxy.id}, {class: "btn btn-danger", role: "button"} %>
+    <%= link_to "Cancel", admin_galaxies_path, {class: "btn btn-secondary", role: "button"} %>
+    <%= f.submit "Submit", {class: "btn btn-primary", role: "button"} %>
+  </div>
+  <% end %>
+</div>

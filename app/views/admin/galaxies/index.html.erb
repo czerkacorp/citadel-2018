@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="card card-primary">
+    <div class="card-header">Galaxies</div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Galaxy_ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Port</th>
+            <th>PingPort</th>
+            <th>Population</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @galaxies.each do |galaxy| %>
+              <tr>
+                <td> <%= galaxy.galaxy_id %> </td>
+                <td> <%= galaxy.name %> </td>
+                <td> <%= galaxy.address %> </td>
+                <td> <%= galaxy.port %> </td>
+                <td> <%= galaxy.pingport %> </td>
+                <td> <%= galaxy.population %> </td>
+                <td><%= link_to 'Edit', edit_admin_galaxy_path(galaxy.galaxy_id), {class: "btn btn-primary", role: "button"}%></td>
+              </tr>
+            <% end %>
+          </tbody>
+    </div>
+  </div>
+</div>
