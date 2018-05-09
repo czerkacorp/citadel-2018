@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Devise Authentication
+gem 'devise'
+gem 'devise-encryptable'
+
 # Rails Settings
 gem 'rails-settings-cached'
 
