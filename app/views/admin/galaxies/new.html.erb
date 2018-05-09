@@ -1,8 +1,8 @@
 <div class="container">
   <div class="card mb-2">
-    <div class="card-header">Edit Galaxy: <%= @galaxy.name %></div>
+    <div class="card-header">New Galaxy</div>
     <div class="card-body">
-      <%= form_for(@galaxy, url: admin_galaxy_path(@galaxy.galaxy_id), method: 'patch') do |f| %>
+      <%= form_for(@galaxy, url: admin_galaxies_path, method: 'post') do |f| %>
         <%= render partial: 'form', locals: { f: f } %>
       <% end %>
     </div>  

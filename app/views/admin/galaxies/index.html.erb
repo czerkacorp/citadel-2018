@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="card card-primary">
-    <div class="card-header">Galaxies</div>
+    <div class="card-header">
+      Galaxies <%= link_to 'Add New Galaxy', new_admin_galaxy_path, {class: "btn btn-success btn-sm ml-2", role: "button"}%>
+      </div>  
     <div class="card-body">
       <table class="table table-striped">
         <thead class="thead-dark">
@@ -23,7 +25,10 @@
                 <td> <%= galaxy.port %> </td>
                 <td> <%= galaxy.pingport %> </td>
                 <td> <%= galaxy.population %> </td>
-                <td><%= link_to 'Edit', edit_admin_galaxy_path(galaxy.galaxy_id), {class: "btn btn-primary", role: "button"}%></td>
+                <td>
+                  <%= link_to 'Edit', edit_admin_galaxy_path(galaxy.galaxy_id), {class: "btn btn-primary", role: "button"}%> 
+                  <%= link_to 'Delete', admin_galaxy_path(galaxy.galaxy_id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                </td>
               </tr>
             <% end %>
           </tbody>
