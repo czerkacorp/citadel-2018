@@ -1,5 +1,15 @@
-<%= form_for(@setting, url: admin_setting_path(@setting.var), method: 'patch') do |f| %>
-  <label><%= @setting.var %></label>
-  <%= f.text_area :value, rows: 10 %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= form_for(@setting, url: admin_setting_path(@setting.var), method: 'patch') do |f| %>
+
+    <% case @setting.var %>
+      <% when "theme" %>
+          <label><%= @setting.var %></label>
+            <%= f.select(:value, themesList.map { |value| [ value, value ]} ) %>
+      <% else %> 
+        <label><%= @setting.var %></label>
+        <%= f.text_area :value, rows: 10 %>
+      <% end %>
+    <%= f.submit %>
+
+  <% end %>
+</div>
