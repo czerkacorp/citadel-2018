@@ -14,4 +14,8 @@ class AccountSyncService
     Account.find(account_id).destroy
   end
 
+  def self.set_active(account_id)
+    Account.find(account_id).update(active: true)
+  end
+
 end
