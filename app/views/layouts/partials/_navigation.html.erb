@@ -1,0 +1,42 @@
+
+<nav class="nav navbar-nav navbar-expand-lg navbar-dark mb-2">
+  <div class="collapse navbar-collapse" id="navbarToggler">
+  <!--<a class="navbar-brand" href="#">Citadel</a>-->
+  <%= link_to("Citadel", root_path, class: "navbar-brand") %>
+  <ul class="ul navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item"><%= link_to 'Users', users_path, {class: "nav-link"} %></li>
+    <li class="nav-item"><%= link_to 'Galaxies', admin_galaxies_path, {class: "nav-link"}%></li>
+    <li class="nav-item"><%= link_to 'Settings', admin_settings_path, {class: "nav-link"}%></li>
+    </ul>
+  </div>
+
+  <div class="navbar-right">
+  <ul class="nav justify-content-end">
+    <!-- Trigger the Login modal with a button -->
+    <button type="button" class="btn" data-toggle="modal" data-target="#myModal">Login</button>
+  </ul>
+  </div>
+</nav>
+
+<!-- Login Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+      				<form class="form-horizontal"  method="post" accept-charset="UTF-8">
+     				    <input id="sp_uname" class="txtBoxDefault login" type="text" name="sp_uname" placeholder="Username.."/>
+				        <input id="sp_pass" class="txtBoxDefault login" type="password" name="sp_pass" placeholder="Password.."/>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" type="submit" name="btnLogin" value="Login">Login</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
