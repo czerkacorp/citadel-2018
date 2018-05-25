@@ -4,21 +4,16 @@
     <hr />
         <div class="col-lg-6">
             <tr>
-                <th>Citadel ID</th>
-                <th>SWGEmu ID</th>
-                <th>Username</th>
+                <th>User ID</th>
+                <th>User Name</th>
                 <th>Email</th>
-                <th>Admin Level</th>
                 <th colspan="2">Created</th>
             </tr>
             <% @users.each do |user| %>
                 <tr>
                 <td><%= user.id %></td>
-                <td><%= user.get_account().account_id %></td>
-                <td><%= user.name %></td>
+                <td><%= user.username %></td>
                 <td><%= user.email %></td>
-                <td><%= user.get_account().admin_level %></td>
-                <td><%= user.get_account().created.strftime("%B %d, %Y - %l:%M %p") %>
                 <td><%= link_to 'View Details', action: :show, id: user.id %>
                 </tr>
             <% end %>
