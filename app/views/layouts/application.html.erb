@@ -3,18 +3,19 @@
   <head>
     <title>Citadel</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application' ,media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag     "themes/#{Setting.theme}" ,media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' ,media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "themes/#{Setting.theme}" ,media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <header>
-      <%= render 'layouts/navigation' %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render 'layouts/partials/navigation' %>
     </header>
     <main role="main">
-      <%= yield %>
+      <div class="container">
+        <%= render 'layouts/partials/messages' %>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
