@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="card mb-2">
-    <div class="card header">Details for: <%= @user.name %></div>
+    <div class="card header">Details for: <%= @user.username %></div>
     <div class="card body">
       <% User.column_names.each do |column_name| %>
         <% next if column_name == "password" %>
@@ -20,7 +20,6 @@
         <% next if column_name == "password" || column_name == "salt" %>
         <div class="row">
           <div class="col"><%= column_name %></div>
-          <div class="col"><%= @user.get_account.send(column_name) %></div>
         </div>
       <% end %>
     </div>
