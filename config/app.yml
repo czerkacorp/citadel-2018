@@ -2,7 +2,7 @@
 defaults: &defaults
   db_secret: "swgemus3cr37!"
   salt_length: 12
-  theme: "defaultTheme"
+  theme: "Default"
 
 development:
   <<: *defaults
