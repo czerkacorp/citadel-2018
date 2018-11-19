@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20180512014311) do
     t.boolean "gender", default: false, null: false
     t.text "template", limit: 255, null: false
     t.timestamp "creation_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.boolean "db_deleted", default: false, null: false
     t.index ["account_id"], name: "acc_idx"
   end
 
