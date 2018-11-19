@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20180512014311) do
     t.text "reason", limit: 255, null: false
   end
 
+  create_table "account_ips", primary_key: "idaccount_ips", id: :integer, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
+    t.integer "account_id", null: false, unsigned: true
+    t.string "ip", limit: 45, null: false
+    t.timestamp "timestamp", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.integer "logout", limit: 1, default: 0, null: false
+  end
+
   create_table "account_log", primary_key: "acclog_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
     t.integer "account_id", null: false, unsigned: true
     t.datetime "timestamp", null: false
@@ -78,7 +85,7 @@ ActiveRecord::Schema.define(version: 20180512014311) do
     t.timestamp "creation_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
-  create_table "citadel_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "citadel_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "var", null: false
     t.text "value"
     t.integer "thing_id"
@@ -88,7 +95,7 @@ ActiveRecord::Schema.define(version: 20180512014311) do
     t.index ["thing_type", "thing_id", "var"], name: "index_citadel_settings_on_thing_type_and_thing_id_and_var", unique: true
   end
 
-  create_table "citadel_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "citadel_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "username", null: false
     t.bigint "account_id"
     t.string "email", default: "", null: false
