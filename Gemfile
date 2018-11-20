@@ -40,7 +40,7 @@ gem 'rails-settings-cached'
 
 # Bootstrappy Things
 gem 'normalize-scss', '~> 5.0', '>= 5.0.3'
-gem 'bootstrap', '~> 4.1'
+gem "bootstrap", ">= 4.1.2"
 gem 'jquery-rails'
 gem 'sprockets-rails'
 
