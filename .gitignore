@@ -30,3 +30,8 @@
 
 # Ignore .DS_Store
 .DS_Store
+
+# Ignore downloaded SQL files
+swgemu.sql
+mantis.sql
+datatables.sql

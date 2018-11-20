@@ -44,6 +44,12 @@ gem 'bootstrap', '~> 4.1'
 gem 'jquery-rails'
 gem 'sprockets-rails'
 
+
+
+####################################
+######### Development Gems #########
+####################################
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -53,6 +59,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rails_db', '2.0.4'
 end
 
 group :development do
