@@ -2,9 +2,9 @@
 
 Citadel is a full-featured account management system for SWGEmu Core3 based Star Wars Galaxies servers built with Ruby on Rails. It's core module provides a secure web interface that allows quick and easy user self registration, account management and account administration. Add-on modules provide even more functionality, giving server administrators the ability to provide best-in-class service to their communities.
 
-### **Citadel is currently pre-alpha and we do NOT recommend using it with a production server. All the necessary pre-requisites are specified in the gem file.**
+**Citadel is currently pre-alpha and we do NOT recommend using it with a production server. All the necessary pre-requisites are specified in the gem file.**
 
-### **You will also need a working SWGEmu development server to use along side Citadel. We recommend using [ZonamaDev](https://github.com/Zonama/ZonamaDev), which is the current easiest way to get up and running.**
+**You will also need a working SWGEmu development server to use along side Citadel. We recommend using [ZonamaDev](https://github.com/Zonama/ZonamaDev), which is the current easiest way to get up and running.**
 
 ## Initial Database Setup for Development
 
