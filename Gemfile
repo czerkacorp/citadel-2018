@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.6.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -8,17 +8,20 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2.4.1'
 # Use mysql2 as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+# simple_form
+gem "simple_form", ">= 5.0.0"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -40,7 +43,7 @@ gem 'rails-settings-cached'
 
 # Bootstrappy Things
 gem 'normalize-scss', '~> 5.0', '>= 5.0.3'
-gem "bootstrap", ">= 4.1.2"
+gem "bootstrap", ">= 4.3.1"
 gem 'jquery-rails'
 gem 'sprockets-rails'
 
@@ -59,7 +62,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'rails_db', '2.0.4'
+  gem 'rails_db', '2.3.1'
 end
 
 group :development do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512014311) do
+ActiveRecord::Schema.define(version: 20200313160712) do
 
   create_table "account_bans", primary_key: "ban_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|
     t.integer "account_id", null: false, unsigned: true
@@ -626,6 +626,14 @@ ActiveRecord::Schema.define(version: 20180512014311) do
     t.integer "session_id", null: false, unsigned: true
     t.string "ip", limit: 15, null: false
     t.datetime "expires", null: false
+  end
+
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
   create_table "skills", primary_key: "skill_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=latin1" do |t|

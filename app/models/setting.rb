@@ -1,6 +1,16 @@
 # RailsSettings Model
 class Setting < RailsSettings::Base
-  self.table_name = "citadel_settings"
-  source Rails.root.join("config/app.yml")
-  namespace Rails.env
+  cache_prefix { "v1" }
+
+  # Define your fields
+  # field :host, type: :string, default: "http://localhost:3000"
+  # field :default_locale, default: "en", type: :string
+  # field :confirmable_enable, default: "0", type: :boolean
+  # field :admin_emails, default: "admin@rubyonrails.org", type: :array
+  # field :omniauth_google_client_id, default: (ENV["OMNIAUTH_GOOGLE_CLIENT_ID"] || ""), type: :string, readonly: true
+  # field :omniauth_google_client_secret, default: (ENV["OMNIAUTH_GOOGLE_CLIENT_SECRET"] || ""), type: :string, readonly: true
+  field :db_secret, default: "swgemus3cr37!"
+  field :salt_length, default: 12
+  field :theme, default: "Default"
+
 end
