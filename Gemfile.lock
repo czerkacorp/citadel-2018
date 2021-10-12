@@ -132,7 +132,8 @@ GEM
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
     public_suffix (4.0.3)
-    puma (3.12.4)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -263,7 +264,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
   normalize-scss (~> 5.0, >= 5.0.3)
-  puma (~> 3.12.4)
+  puma (~> 4.3.9)
   rails (~> 5.2.4.1)
   rails-settings-cached
   rails_db (= 2.3.1)
